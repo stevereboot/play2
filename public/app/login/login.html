@@ -1,0 +1,97 @@
+<div class="container">
+	<div class="row" ng-if="!login.registration">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Sign in</h3>
+				</div> <!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="alert alert-danger" role="alert" ng-if="login.message">{{login.message}}</div>
+					<form>
+						<div class="form-group">
+							<label for="loginUsername">Username</label>
+							<input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required autofocus ng-model="login.loginForm.username">
+						</div> <!-- /.form-group -->
+
+						<div class="form-group">
+							<label for="loginPassword">Password</label>
+							<input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required autofocus ng-model="login.loginForm.password">
+						</div> <!-- /.form-group -->
+
+						<button type="submit" class="btn btn-md btn-primary btn-block" ng-click="login.login()">Sign in</button>
+
+						<div style="width: 100%; height: 10px; border-bottom: 1px solid #eee; text-align: center; margin: 20px 0;">
+							<span style="color: #777; background-color: #fff; padding: 0 10px;">or</span>
+						</div>
+
+						<button type="button" class="btn btn-md btn-default btn-block" ng-click="login.toggleRegistration()">Create New Account</button>
+					</form>
+				</div> <!-- /.panel-body -->
+			</div> <!-- /.panel -->
+		</div> <!-- /.col -->
+	</div> <!-- /.row -->
+
+	<div class="row" ng-if="login.registration">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Register for an account</h3>
+				</div> <!-- /.panel-heading -->
+				<div class="panel-body">
+					<form>
+						<div class="form-group">
+							<label for="registerUsername">Username</label>
+							<input type="text" class="form-control" id="registerUsername" placeholder="Enter username" required autofocus ng-model="login.registerForm.username">
+						</div> <!-- /.form-group -->
+
+						<div class="form-group">
+							<label for="registerPassword">Password</label>
+							<input type="password" class="form-control" id="registerPassword" placeholder="at least 1 character" required autofocus ng-model="login.registerForm.password">
+						</div> <!-- /.form-group -->
+
+						<div class="form-group">
+							<label for="registerPasswordConfirm">Confirm Password</label>
+							<input type="password" class="form-control" id="registerPasswordConfirm" placeholder="Confirm password" required autofocus ng-model="login.registerForm.passwordConfirm">
+						</div> <!-- /.form-group -->
+
+						<div class="form-group">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Choose Avatar <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li style="padding: 0 4px;">
+										<table>
+											<tr>
+												<td ng-repeat="cat in login.avatarCat" class="emoji-cat-list">
+													<img class="avatar-img" ng-src="img/avatar/category/{{login.thisAvatarCat == cat.name ? cat.name+'2' : cat.name}}.png" alt="{{cat.label}}" ng-click="login.setAvatarCat(cat.name, cat.index); $event.stopPropagation();">
+												</td>
+											</tr>
+										</table>
+									</li>
+									<li class="avatar-picker">
+										<table>
+											<tr ng-repeat="row in login.avatarList[login.thisAvatarIndex]">
+												<td ng-repeat="e in row" class="emoji-list"><a href="" ng-click="login.select_avatar(e)" ng-bind-html="login.avatar_img(e)"></td>
+											</tr>
+										</table>
+									</li>
+								</ul>
+							</div> <!-- /.btn-group -->
+							<span style="padding-left:10px;" ng-bind-html="login.selected_avatar_img"></span>
+						</div> <!-- /.form-group -->
+
+						<button type="submit" class="btn btn-md btn-primary btn-block" ng-click="login.create()">Create Account</button>
+
+						<div style="width: 100%; height: 10px; border-bottom: 1px solid #eee; text-align: center; margin: 20px 0;">
+							<span style="color: #777; background-color: #fff; padding: 0 10px;">or</span>
+						</div>
+
+						<button type="button" class="btn btn-md btn-default btn-block" ng-click="login.toggleRegistration()">Sign in</button>
+
+					</form>
+				</div> <!-- /.panel-body -->
+			</div> <!-- /.panel -->
+		</div> <!-- /.col -->
+	</div> <!-- /.row -->
+</div> <!-- /.container -->

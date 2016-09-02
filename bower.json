@@ -1,0 +1,14 @@
+{
+	"name": "playtime",
+	"version": "1.0.0",
+	"dependencies": {
+		"jquery": "latest",
+		"bootstrap": "latest",
+		"fontawesome": "latest",
+		"socket.io-client": "latest",
+		"angular": "latest",
+		"angular-sanitize": "latest",
+		"ui-router": "latest",
+		"moment": "latest"
+	}
+}
